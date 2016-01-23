@@ -32,9 +32,11 @@ python moonAvoidance.py --ghostlim 30
 
 ![Alt text](MoonAvoidance_action116380_pointingSpiral.png?raw=true "Title")
 
+![Alt text](]GhostCheck-30_action116380_pointingSpiral.png?raw=true "Title")
+
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+James McCormac
 
 ## License
 
