@@ -4,16 +4,16 @@ A script to calculate the moon avoidance angle for NGTS. Requires astropy, numpy
 
 ## Usage
 ```
-python moonAvoidance.py -h <br/>
-usage: moonAvoidance.py [-h] [--ghostlim GHOSTLIM] [--ds9] <br/>
-<br/>
-A script measure the moon avoidance angle <br/>
-<br/>
-optional arguments: <br/>
-  -h, --help           show this help message and exit <br/>
-  --outdir OUTDIR      Folder for saving output plots <br/>
-  --ghostlim GHOSTLIM  Angle below which to check images for ghosts <br/>
-  --ds9                Display the images in DS9? <br/>
+python moonAvoidance.py -h 
+usage: moonAvoidance.py [-h] [--ghostlim GHOSTLIM] [--ds9]
+
+A script measure the moon avoidance angle 
+
+optional arguments: 
+  -h, --help           show this help message and exit 
+  --outdir OUTDIR      Folder for saving output plots 
+  --ghostlim GHOSTLIM  Angle below which to check images for ghosts 
+  --ds9                Display the images in DS9? 
 ```
 ## Motivation
 
@@ -30,7 +30,7 @@ N/A
 ## Tests
 Navigate to the directory containing the fits images to analyse. Then run: <br/>
 ``` 
-python /path/to/script/moonAvoidance.py --ghostlim 30<br/>
+python /path/to/script/moonAvoidance.py --ghostlim 30 
 ```
 If --outdir is set the plots are saved there. If not, they are saved in the local directory. See below for example output plots. 
 
