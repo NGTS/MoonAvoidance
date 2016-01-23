@@ -15,12 +15,16 @@ from ds9 import *
 def argParse():
 	parser=ap.ArgumentParser(description="A script measure the moon avoidance angle")
 	parser.add_argument('--ghostlim',type=int,help = "Angle below which to check images for ghosts")
+	parser.add_argument('--outdir',type=int,help = "Folder for saving output plots")
 	parser.add_argument('--ds9',help = "Display the images in DS9?",action='store_true')
 	args=parser.parse_args()
 	return args
 
 args=argParse()
-outdir="/Users/James/Documents/PythonScripts/NGTS/Repo/MoonAvoidance"
+if not args.outdir:
+	outdir=os.getcwd()
+else:
+	outdir=args.outdir
 
 def estimate_exp_coeffs(counts):
 	return [max(counts)*2,0.154,min(counts)]

@@ -11,6 +11,7 @@ A script measure the moon avoidance angle <br/>
 <br/>
 optional arguments: <br/>
   -h, --help           show this help message and exit <br/>
+  --outdir OUTDIR      Folder for saving output plots <br/>
   --ghostlim GHOSTLIM  Angle below which to check images for ghosts <br/>
   --ds9                Display the images in DS9? <br/>
 
