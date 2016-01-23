@@ -13,7 +13,7 @@ from ds9 import *
 
 # get command line args
 def argParse():
-	parser=ap.ArgumentParser(description="A script measure the moon avoidance angle")
+	parser=ap.ArgumentParser(description="A script to measure the NGTS moon avoidance angle")
 	parser.add_argument('--ghostlim',type=int,help = "Angle below which to check images for ghosts")
 	parser.add_argument('--outdir',type=int,help = "Folder for saving output plots")
 	parser.add_argument('--ds9',help = "Display the images in DS9?",action='store_true')

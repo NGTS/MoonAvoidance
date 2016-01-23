@@ -7,7 +7,7 @@ A script to calculate the moon avoidance angle for NGTS. Requires astropy, numpy
 python moonAvoidance.py -h 
 usage: moonAvoidance.py [-h] [--ghostlim GHOSTLIM] [--ds9]
 
-A script measure the moon avoidance angle 
+A script to measure the NGTS moon avoidance angle 
 
 optional arguments: 
   -h, --help           show this help message and exit 
