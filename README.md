@@ -30,7 +30,7 @@ N/A
 
 python moonAvoidance.py --ghostlim 30
 
-_Insert image_
+![Alt text](MoonAvoidance_action116380_pointingSpiral.png?raw=true "Title")
 
 ## Contributors
 
