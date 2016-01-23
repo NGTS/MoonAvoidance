@@ -3,7 +3,7 @@
 A script to calculate the moon avoidance angle for NGTS. Requires astropy, numpy, scipy.optimize and seaborn
 
 ## Usage
-'''
+```
 python moonAvoidance.py -h <br/>
 usage: moonAvoidance.py [-h] [--ghostlim GHOSTLIM] [--ds9] <br/>
 <br/>
@@ -14,7 +14,7 @@ optional arguments: <br/>
   --outdir OUTDIR      Folder for saving output plots <br/>
   --ghostlim GHOSTLIM  Angle below which to check images for ghosts <br/>
   --ds9                Display the images in DS9? <br/>
-'''
+```
 ## Motivation
 
 The 12 NGTS telescopes were recently fitted with new baffles and so the moon avoidance angle needed to be recalculated. 
@@ -29,9 +29,9 @@ N/A
 
 ## Tests
 Navigate to the directory containing the fits images to analyse. Then run: <br/>
- 
-> python /path/to/script/moonAvoidance.py --ghostlim 30<br/>
-
+``` 
+python /path/to/script/moonAvoidance.py --ghostlim 30<br/>
+```
 If --outdir is set the plots are saved there. If not, they are saved in the local directory. See below for example output plots. 
 
 ![Alt text](MoonAvoidance_action116380_pointingSpiral.png?raw=true "Title")
