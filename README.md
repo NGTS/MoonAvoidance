@@ -29,13 +29,13 @@ N/A
 ## Tests
 Navigate to the directory containing the fits images to analyse. Then run: <br/>
  
-python /path/to/script/moonAvoidance.py --ghostlim 30<br/>
+> python /path/to/script/moonAvoidance.py --ghostlim 30<br/>
 
 If --outdir is set the plots are saved there. If not, they are saved in the local directory. See below for example output plots. 
 
 ![Alt text](MoonAvoidance_action116380_pointingSpiral.png?raw=true "Title")
 
-![Alt text](]GhostCheck-30_action116380_pointingSpiral.png?raw=true "Title")
+![Alt text](GhostCheck-30_action116380_pointingSpiral.png?raw=true "Title")
 
 ## Contributors
 
