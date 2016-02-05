@@ -69,15 +69,15 @@ def plotMoonDataFit(moon_ang,median_counts,xfit,yfit,moon_phase):
 	action=os.getcwd().split('/')[-1]
 	fig,ax=pl.subplots(1,figsize=(10,10))
 	seaborn.axes_style("darkgrid")
-	ax.plot(moon_ang,median_counts,'r.')
-	ax.plot(xfit,yfit,'k--')
+	ax.semilogy(moon_ang,median_counts,'r.')
+	ax.semilogy(xfit,yfit,'k--')
 	ax.set_xlabel('Moon Distance (deg)')
 	ax.set_ylabel('Median ADU (image)')
-	ax.set_yticks(np.arange(0,max(yfit),2000))
+	#ax.set_yticks(np.arange(0,max(yfit),2000))
 	ax.set_title('Moon Avoidance Test (%s - %d%% illuminated)' % (action, int(np.average(moon_phase)*100)))
 	ax.set_xlim(0,180)
-	ax.set_ylim(0,max(median_counts))
-	ax.grid(True)
+	ax.set_ylim(100,10000)
+	ax.grid(True,which='both')
 	fig.savefig("%s/MoonAvoidance_%s.png" % (outdir,action), dpi=300)
 	return action
 
@@ -122,7 +122,7 @@ def checkGhostLimit(moon_ang,t,action):
 				coscan=cd[0:2048,2068:]
 				cdcor=cdata-np.median(coscan)
 				ax.imshow(cdcor,cmap=cm.afmhot,vmin=0.8*np.median(cdcor),vmax=1.2*np.median(cdcor),interpolation=None)        
-				ax.set_title('MD: %.2f' % (check_ang_s[c]))
+				ax.set_title('%.2f' % (check_ang_s[c]))
 			print c
 			c+=1
 	print ("Saving figure...")
