@@ -32,22 +32,31 @@ def estimate_exp_coeffs(counts):
 def exp_func(x, a, c, d):
     return a*np.exp(-c*x)+d
 
-def getMoonData():
+def getMoonData(outdir):
+	moonFile='%s/moonSummary.txt'
 	t=g.glob('*.fits')
-	moon_ang=np.empty(len(t))
-	moon_phase=np.empty(len(t))
-	median_counts=np.empty(len(t))
-	for i in range(0,len(t)):
-		h=fits.open(t[i])
-		d=h[0].data
-		prescan=d[0:2048,:20]
-		overscan=d[0:2048,2068:]
-		data=d[0:2048,20:2068]
-		median_counts[i]=np.median(data)-np.median(overscan)
-		moon_ang[i]=h[0].header['MOONDIST']
-		moon_phase[i]=h[0].header['MOONFRAC']
-		h.close()
-		print ("[%d/%d]..." % (i+1,len(t)))
+	if os.path.exists(moonFile) == False:
+		f=open(moonFile,'w')
+		f.write('# MedCounts\tMoonAng\tMoonPhase\n')
+		moon_ang=np.empty(len(t))
+		moon_phase=np.empty(len(t))
+		median_counts=np.empty(len(t))
+		for i in range(0,len(t)):
+			h=fits.open(t[i])
+			d=h[0].data
+			prescan=d[0:2048,:20]
+			overscan=d[0:2048,2068:]
+			data=d[0:2048,20:2068]
+			median_counts[i]=np.median(data)-np.median(overscan)
+			moon_ang[i]=float(h[0].header['MOONDIST'])
+			moon_phase[i]=float(h[0].header['MOONFRAC'])
+			h.close()
+			f.write('%d\t%.2f\t%.2f\n'%(median_counts[i],moon_ang[i],moon_phase[i]))
+			print ("[%d/%d]..." % (i+1,len(t)))
+		f.close()
+	else:
+		print "Found moonFile, reading it..."
+		median_counts,moon_ang,moon_phase=np.loadtxt(moonFile,usecols=[0,1,2],unpack=True)
 	return t,median_counts,moon_ang,moon_phase
 
 def fitMoonData(p0,moon_ang,median_counts):
@@ -67,7 +76,7 @@ def plotMoonDataFit(moon_ang,median_counts,xfit,yfit,moon_phase):
 	ax.set_yticks(np.arange(0,max(yfit),2000))
 	ax.set_title('Moon Avoidance Test (%s - %d%% illuminated)' % (action, int(np.average(moon_phase)*100)))
 	ax.set_xlim(0,180)
-	ax.set_ylim(0,max(yfit))
+	ax.set_ylim(0,max(median_counts))
 	ax.grid(True)
 	fig.savefig("%s/MoonAvoidance_%s.png" % (outdir,action), dpi=300)
 	return action
@@ -113,7 +122,7 @@ def checkGhostLimit(moon_ang,t,action):
 				coscan=cd[0:2048,2068:]
 				cdcor=cdata-np.median(coscan)
 				ax.imshow(cdcor,cmap=cm.afmhot,vmin=0.8*np.median(cdcor),vmax=1.2*np.median(cdcor),interpolation=None)        
-				ax.set_title('MOONDIST: %.2f' % (check_ang_s[c]))
+				ax.set_title('MD: %.2f' % (check_ang_s[c]))
 			print c
 			c+=1
 	fig.savefig('%s/GhostCheck-%d_%s.png' % (outdir,args.ghostlim,action),dpi=300)
