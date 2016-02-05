@@ -125,6 +125,7 @@ def checkGhostLimit(moon_ang,t,action):
 				ax.set_title('MD: %.2f' % (check_ang_s[c]))
 			print c
 			c+=1
+	print ("Saving figure...")
 	fig.savefig('%s/GhostCheck-%d_%s.png' % (outdir,args.ghostlim,action),dpi=300)
 
 def main():
