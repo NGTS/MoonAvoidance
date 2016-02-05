@@ -114,6 +114,7 @@ def checkGhostLimit(moon_ang,t,action):
 				cdcor=cdata-np.median(coscan)
 				ax.imshow(cdcor,cmap=cm.afmhot,vmin=0.8*np.median(cdcor),vmax=1.2*np.median(cdcor),interpolation=None)        
 				ax.set_title('MOONDIST: %.2f' % (check_ang_s[c]))
+			print c
 			c+=1
 	fig.savefig('%s/GhostCheck-%d_%s.png' % (outdir,args.ghostlim,action),dpi=300)
 
