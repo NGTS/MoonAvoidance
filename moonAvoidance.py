@@ -47,6 +47,7 @@ def getMoonData():
 		moon_ang[i]=h[0].header['MOONDIST']
 		moon_phase[i]=h[0].header['MOONFRAC']
 		h.close()
+		print ("[%d/%d]..." % (i+1,len(t)))
 	return t,median_counts,moon_ang,moon_phase
 
 def fitMoonData(p0,moon_ang,median_counts):
