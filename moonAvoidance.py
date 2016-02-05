@@ -33,7 +33,7 @@ def exp_func(x, a, c, d):
     return a*np.exp(-c*x)+d
 
 def getMoonData(outdir):
-	moonFile='%s/moonSummary.txt'
+	moonFile='%s/moonSummary.txt' % (outdir)
 	t=g.glob('*.fits')
 	if os.path.exists(moonFile) == False:
 		f=open(moonFile,'w')
@@ -128,7 +128,7 @@ def checkGhostLimit(moon_ang,t,action):
 	fig.savefig('%s/GhostCheck-%d_%s.png' % (outdir,args.ghostlim,action),dpi=300)
 
 def main():
-	t,median_counts,moon_ang,moon_phase=getMoonData()
+	t,median_counts,moon_ang,moon_phase=getMoonData(outdir)
 	p0=estimate_exp_coeffs(median_counts)
 	popt,pcov,xfit,yfit=fitMoonData(p0,moon_ang,median_counts)
 	action=plotMoonDataFit(moon_ang,median_counts,xfit,yfit,moon_phase)
