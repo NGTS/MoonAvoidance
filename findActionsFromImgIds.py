@@ -6,7 +6,7 @@ action_id=[]
 for i in img:
 	qry="SELECT action_id FROM raw_image_list WHERE image_id=%d LIMIT 1" % i
 	with db.cursor() as cur:
-		cr.execute(qry)	
+		cur.execute(qry)	
 		for row in cur:
 			action_id.append(row[0])
 print set(action_id)
