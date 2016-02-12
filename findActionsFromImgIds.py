@@ -5,7 +5,7 @@ f=open('pre_baffle_imglist.txt','r').readlines()
 img,action_id=[],[]
 for i in f:
 	img.append(i.split('\n')[0])
-f.close()
+f.close
 for i in img:
 	qry="SELECT action_id FROM raw_image_list WHERE image_id=%s LIMIT 1" % i
 	with db.cursor() as cur:
