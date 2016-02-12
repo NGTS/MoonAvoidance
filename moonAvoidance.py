@@ -43,11 +43,7 @@ def getMoonData(outdir):
 		median_counts=np.empty(len(t))
 		for i in range(0,len(t)):
 			h=fits.open(t[i])
-			d=h[0].data
-			prescan=d[0:2048,:20]
-			overscan=d[0:2048,2068:]
-			data=d[0:2048,20:2068]
-			median_counts[i]=np.median(data)-np.median(overscan)
+			median_counts[i]=float(h[0].header['ADU_MED'])
 			moon_ang[i]=float(h[0].header['MOONDIST'])
 			moon_phase[i]=float(h[0].header['MOONFRAC'])
 			h.close()
